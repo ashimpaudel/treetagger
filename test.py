@@ -25,7 +25,8 @@ for i in range(len(df3_list)):
         if df3_list[i][0] == new_tag or df3_list[i][0] == 'punc':
             new_list.append(df3_list[i][1][1:-1])
         else:
-            print new_tag + ' :',' '.join(new_list)
+            sentence =  new_tag + ' :'+ ' '.join(new_list)
+            print sentence + '\n'
             new_list = []
             new_tag = df3_list[i][0]
             new_list.append(df3_list[i][1][1:-1])
