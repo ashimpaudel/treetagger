@@ -58,6 +58,7 @@ swTagger = treetaggerwrapper.TreeTagger(TAGLANG='sw',TAGDIR=tagdir,TAGOPT='-toke
 sw_sentence = ''
 en_sentence = ''
 post=''
+index = 0
 
 for row in csvreader:
 	if row[-1][0]=='#':          
@@ -99,6 +100,7 @@ for row in csvreader:
 		post =  row[-1]
 	elif row[-1][0]=='P':
 		post =  row[-1]
+        index += 1
 	
 
 
@@ -108,3 +110,16 @@ if en_sentence!="":
 elif sw_sentence!="":
 	write_sw(sw_sentence,post)
 	sw_sentence=""
+
+def 2nd_feature(index):
+    try:
+        if 'Post:' not in df3_list[index - 1][1] and df[index-1][0] != 'punc':
+            return df3_list[index-1][0]
+        elif 'Post:' in df3_list[index - 1][1]:
+            return df3_list[index-2][0]
+        elif df[index-1][0] == 'punc':
+
+    except:
+        return 'init'
+        return the previous word
+
